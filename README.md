@@ -1,6 +1,6 @@
 # React-Starter :fire:
 
-Boilerplate with React, Redux, React-Router, and Axios, based on [create-react-app](https://github.com/facebookincubator/create-react-app)/
+Boilerplate with React, Redux, React-Router, and Axios, based on [create-react-app](https://github.com/facebookincubator/create-react-app).
 
 ## CLI
 
@@ -16,4 +16,4 @@ Boilerplate with React, Redux, React-Router, and Axios, based on [create-react-a
 
 ## Contributors
 
-* [Ethan Butler](https://github.com/ethanbulter)
+* [Ethan Butler](https://github.com/ethanbutler)
