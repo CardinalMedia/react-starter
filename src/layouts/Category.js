@@ -8,7 +8,7 @@ import Card from '../components/Card'
 
 const config = require("../config.json")
 
-class Home extends Component {
+class Category extends Component {
   constructor(props) {
     super(props)
 
@@ -94,4 +94,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 export default connect(
   null,
   mapDispatchToProps
-)(Home)
+)(Category)

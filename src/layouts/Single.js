@@ -4,6 +4,8 @@ import { push }               from "react-router-redux"
 import { bindActionCreators } from "redux"
 import * as axios           from "axios"
 
+import Card from '../components/Card'
+
 const config = require("../config.json")
 
 class Single extends Component {
@@ -27,7 +29,7 @@ class Single extends Component {
       })
     })
 
-    axios.get(`${config.restUrl}posts?slug=${slug}`)
+    axios.get(`${config.restUrl}/holiday-2016?slug=${slug}`)
       .then(({ data }) => {
         this.setState(prev => {
           return Object.assign({}, prev, {
@@ -69,11 +71,9 @@ class Single extends Component {
       )
     } else {
       return (
-        <article className="single">
-          <h1 className="single-title" dangerouslySetInnerHTML={this.html(data.title.rendered)}></h1>
-          <div className="single-content" dangerouslySetInnerHTML={this.html(data.content.rendered)}></div>
-          <a onClick={ () => { goTo('/')} }>Back home</a>
-        </article>
+        <div className="Single row">
+          <Card post={data} goTo={goTo} key={data.id} />
+        </div>
       )
     }
 

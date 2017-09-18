@@ -1,3 +1,9 @@
 // Add styles here!
+@import "scss/_variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+@import "scss/components/_navbar";
+
 @import "scss/layouts/_Home";
 @import "scss/layouts/_Single";
