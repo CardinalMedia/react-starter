@@ -97,7 +97,7 @@ module.exports = {
             text: /\.scss$/,
             include: paths.appSrc,
             loaders: ["style-loader", "css-loader", "sass-loader"]
-          }
+          },
           {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
