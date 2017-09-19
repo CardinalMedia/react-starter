@@ -1,3 +1,39 @@
-.navbar-gg {
+.header {
   background-color: $blue;
+}
+
+.navbar-gg {
+  color: #fff;
+  background-color: $blue;
+  padding: 0 1rem;
+  .navbar-text {
+    color: $white;
+  }
+  .navbar-nav {
+    .nav-link {
+      color: $white;
+      padding: 1.2rem 1rem;
+      &:hover, &:focus {
+        color: $white;
+        background-color: $red;
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  svg {
+    height: auto;
+    width: 160px;
+    max-width: 160px;
+  }
+}
+
+.navbar-text {
+  svg {
+    width: 100px;
+    vertical-align: middle;
+  }
 }

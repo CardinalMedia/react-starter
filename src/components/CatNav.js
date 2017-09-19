@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect }            from "react-redux"
+import { push }               from "react-router-redux"
+import { bindActionCreators } from "redux"
 import * as axios             from "axios"
 const config = require("../config.json")
 
@@ -24,7 +27,6 @@ class CatNav extends React.Component {
 
     axios.get(`${config.restUrl}/2016`)
       .then(({ data }) => {
-        console.log(data)
         this.setState(prev => {
           return Object.assign({}, prev, {
             loading: false,
@@ -33,7 +35,6 @@ class CatNav extends React.Component {
         })
       })
       .catch((err) => {
-        console.log(err.message)
         this.setState(() => {
           return { err }
         })
@@ -61,7 +62,9 @@ class CatNav extends React.Component {
 
           return (
             <li className="nav-item" key={id}>
-              <a className="nav-link" href={`/category/${cat.slug}`}>{cat.name}</a>
+              <a className="nav-link" onClick={() => { 
+                this.props.goTo(`/category/${cat.slug}`) 
+              } }>{cat.name}</a>
             </li>
           )
 
@@ -73,4 +76,11 @@ class CatNav extends React.Component {
   }
 }
 
-export default CatNav
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  goTo: path => push(path)
+}, dispatch)
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CatNav)

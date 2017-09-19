@@ -1,0 +1,47 @@
+.hero {
+  position: relative;
+  min-height: 350px;
+  width: 100%;
+  background-image: url(/assets/images/national-parks.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 50px;
+  color: $white;
+  z-index: 100;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: fade-out($blue, 0.25);
+    z-index: 200;
+  }
+  h1 {
+    position: relative;
+    z-index: 300;
+    font-size: 4rem;
+    font-family: $poppins;
+    font-weight: 600;
+    line-height: 1.1;
+    top: 60px;
+  }
+}
+
+.year-svg {
+  max-width: 200px;
+  vertical-align: bottom;
+}
+.ampersand {
+  max-width: 80px;
+  vertical-align: bottom;
+}
+
+.hero {
+  &.category-food-drink, 
+  &.category-food-lover {
+    background-image: url(/assets/images/gingerbread.jpg);
+  }
+}

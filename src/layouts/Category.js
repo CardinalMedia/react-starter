@@ -19,20 +19,37 @@ class Category extends Component {
     }
   }
 
+  componentWillReceiveProps () {
+    console.log(this.props)
+    const { match } = this.props
+    const { slug } = match.params
+    console.log(slug)
+  }
+
   componentWillMount() {
+    const { match } = this.props
+    const { slug } = match.params
     this.setState(prev => {
       return Object.assign({}, prev, {
         loading: true
       })
     })
-
-    axios.get(`${config.restUrl}/holiday-2016`)
+    axios.get(`${config.restUrl}/2016?slug=${slug}`)
       .then(({ data }) => {
-        console.log(data)
-        this.setState(prev => {
-          return Object.assign({}, prev, {
-            loading: false,
-            data: data
+       axios.get(`${config.restUrl}/holiday-2016?2016=${data[0].id}`)
+        .then(({ data }) => {
+          this.setState(prev => {
+            return Object.assign({}, prev, {
+              loading: false,
+              data: data
+            })
+          })
+
+        })
+        .catch((err) => {
+          console.log(err.message)
+          this.setState(() => {
+            return { err }
           })
         })
       })
@@ -42,6 +59,7 @@ class Category extends Component {
           return { err }
         })
       })
+      
   }
 
   html(__html){

@@ -3,7 +3,11 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 
+@import "scss/_globals";
+
 @import "scss/components/_navbar";
+@import "scss/components/_hero";
+@import "scss/components/_cards";
 
 @import "scss/layouts/_Home";
 @import "scss/layouts/_Single";

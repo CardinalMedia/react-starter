@@ -1,0 +1,41 @@
+.col-sm-4 {
+  margin-bottom: 60px;
+}
+
+.card {
+  height: 100%;
+}
+.tags {
+  .tag {
+    display: inline-block;
+    padding: .5rem;
+    color: $cerulean !important;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
+.card-body {
+  padding: 30px;
+  h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: $blue;
+    font-family: $poppins;
+  }
+  p {
+    line-height: 1.4;
+    font-size: .9rem;
+    color: #6C6C6C;
+  }
+}
+
+.seller-info {
+  margin-bottom: 20px;
+  p {
+    color: $black;
+    font-size: .9rem;
+    font-weight: 600;
+  }
+}
