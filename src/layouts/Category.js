@@ -19,14 +19,13 @@ class Category extends Component {
     }
   }
 
-  componentWillReceiveProps () {
-    const { match } = this.props
-    const { slug } = match.params
+  handleData(slug) {
     this.setState(prev => {
       return Object.assign({}, prev, {
         loading: true
       })
     })
+
     axios.get(`${config.restUrl}/2016?slug=${slug}`)
       .then(({ data }) => {
        axios.get(`${config.restUrl}/holiday-2016?2016=${data[0].id}`)
@@ -55,39 +54,13 @@ class Category extends Component {
   }
 
   componentWillMount() {
-    const { match } = this.props
-    const { slug } = match.params
-    this.setState(prev => {
-      return Object.assign({}, prev, {
-        loading: true
-      })
-    })
-    axios.get(`${config.restUrl}/2016?slug=${slug}`)
-      .then(({ data }) => {
-       axios.get(`${config.restUrl}/holiday-2016?2016=${data[0].id}`)
-        .then(({ data }) => {
-          this.setState(prev => {
-            return Object.assign({}, prev, {
-              loading: false,
-              data: data
-            })
-          })
+    const { slug } = this.props
+    this.handleData(slug)
+  }
 
-        })
-        .catch((err) => {
-          console.log(err.message)
-          this.setState(() => {
-            return { err }
-          })
-        })
-      })
-      .catch((err) => {
-        console.log(err.message)
-        this.setState(() => {
-          return { err }
-        })
-      })
-      
+  componentWillReceiveProps(nextProps) {
+    const { slug } = nextProps
+    this.handleData(slug)
   }
 
   html(__html){
@@ -116,7 +89,7 @@ class Category extends Component {
     } else {
       return (
         <div className="Home row">
-          {data.map(post => {
+          {data && data.length ? data.map(post => {
             const {
               id
             } = post
@@ -125,7 +98,7 @@ class Category extends Component {
                 <Card post={post} goTo={goTo} />
               </div>
             )
-          })}
+          }) : <div>No posts found!</div> }
         </div>
       )
     }
