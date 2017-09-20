@@ -29,7 +29,7 @@ class App extends Component {
                 </g>
               </svg>
             </a>
-            
+
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -46,7 +46,9 @@ class App extends Component {
         <Route path="*" component={PageHero} />
         <div className="container">
             <Route path="/" exact component={Home} />
-            <Route path="/category/:slug" exact component={Category} />
+            <Route path="/category/:slug" exact render={props => {
+              return <Category slug={props.match.params.slug} />
+            }} />
             <Route path="/gifts/:slug" component={Single} />
         </div>
         <footer></footer>
