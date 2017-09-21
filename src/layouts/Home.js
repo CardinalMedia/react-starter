@@ -14,25 +14,22 @@ class Home extends Component {
 
     this.state = {
       loading: false,
-      data: null,
-      err: null
+      data: [],
+      err: null,
+      count: 21,
+      offset: 0
     }
   }
 
-  componentWillMount() {
-    this.setState(prev => {
-      return Object.assign({}, prev, {
-        loading: true
-      })
-    })
+  fetchPosts () {
 
-    axios.get(`${config.restUrl}/holiday-2016`)
+    axios.get(`${config.restUrl}/holiday-2016?per_page=${this.state.count}&offset=${this.state.offset}`)
       .then(({ data }) => {
-        console.log(data)
         this.setState(prev => {
           return Object.assign({}, prev, {
             loading: false,
-            data: data
+            data: prev.data.concat(data),
+            offset: prev.offset + 9
           })
         })
       })
@@ -42,6 +39,22 @@ class Home extends Component {
           return { err }
         })
       })
+
+  }
+
+  componentWillMount () {
+    this.setState(prev => {
+      return Object.assign({}, prev, {
+        loading: true
+      })
+    })
+    this.fetchPosts()
+    
+    var _this = this;
+    window.setTimeout( function() {
+      _this.fetchPosts()
+    }, 5000 )
+
   }
 
   html(__html){
