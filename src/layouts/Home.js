@@ -15,17 +15,15 @@ class Home extends Component {
     this.state = {
       loading: false,
       data: [],
-      err: null,
-      count: 21,
-      offset: 0
+      err: null
     }
   }
 
   fetchPosts () {
-
+    let _this = this
     axios.get(`${config.restUrl}/holiday-2017?per_page=100`)
       .then(({ data }) => {
-        this.setState(prev => {
+        _this.setState(prev => {
           return Object.assign({}, prev, {
             loading: false,
             data: prev.data.concat(data),
@@ -35,11 +33,10 @@ class Home extends Component {
       })
       .catch((err) => {
         console.log(err.message)
-        this.setState(() => {
+        _this.setState(() => {
           return { err }
         })
       })
-
   }
 
   componentWillMount () {
@@ -67,6 +64,7 @@ class Home extends Component {
     } = this.props
 
     if(err){
+      this.fetchPosts()
       return (
         <div>{err.message}</div>
       )

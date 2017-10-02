@@ -17,7 +17,7 @@ class App extends Component {
         <header className="header">
           <nav className="container navbar navbar-expand-lg navbar-dark navbar-gg">
 
-            <a className="navbar-brand" href="/">
+            <a className="navbar-brand" href="/holiday-2017/">
               <svg viewBox="0 0 266 70" version="1.1">
                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g id="OS-logo" fillRule="nonzero">

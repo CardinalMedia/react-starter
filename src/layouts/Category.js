@@ -26,7 +26,6 @@ class Category extends Component {
       })
     })
 
-    console.log(slug);
     axios.get(`${config.restUrl}/2017?slug=${slug}`)
       .then(({ data }) => {
        axios.get(`${config.restUrl}/holiday-2017?per_page=100&2017=${data[0].id}`)
