@@ -7,9 +7,20 @@ import registerServiceWorker from "./registerServiceWorker"
 import store, { history }    from "./store"
 import "./main.scss"
 
+import ReactGA from "react-ga"
+
+ReactGA.initialize('UA-2537210-10')
+
+function logPageView () {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
 ReactDOM.render((
   <Provider store={store}>
-    <Router history={history}>
+    <Router onUpdate={() => {
+      logPageView()
+      }} history={history}>
       <App/>
     </Router>
   </Provider>

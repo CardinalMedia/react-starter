@@ -10,6 +10,7 @@ import PageHero from "./components/PageHero"
 import CatNav from "./components/CatNav"
 
 class App extends Component {
+
   render() {
     return (
       <div>

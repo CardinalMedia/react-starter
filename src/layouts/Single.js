@@ -29,7 +29,7 @@ class Single extends Component {
       })
     })
 
-    axios.get(`${config.restUrl}/holiday-2016?slug=${slug}`)
+    axios.get(`${config.restUrl}/holiday-2017?slug=${slug}`)
       .then(({ data }) => {
         this.setState(prev => {
           return Object.assign({}, prev, {

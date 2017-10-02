@@ -23,7 +23,7 @@ class Home extends Component {
 
   fetchPosts () {
 
-    axios.get(`${config.restUrl}/holiday-2016?per_page=${this.state.count}&offset=${this.state.offset}`)
+    axios.get(`${config.restUrl}/holiday-2017?per_page=100`)
       .then(({ data }) => {
         this.setState(prev => {
           return Object.assign({}, prev, {
@@ -49,12 +49,6 @@ class Home extends Component {
       })
     })
     this.fetchPosts()
-    
-    var _this = this;
-    window.setTimeout( function() {
-      _this.fetchPosts()
-    }, 5000 )
-
   }
 
   html(__html){
@@ -81,14 +75,16 @@ class Home extends Component {
         <div>Loading</div>
       )
     } else {
+      let i = 0
       return (
         <div className="Home row">
-          {data.map(post => {
+          { data.map(post => {
             const {
               id
             } = post
+            i++
             return (
-              <div className="col-sm-4" key={id}>
+              <div className="col-sm-4" key={`${id}-${i}`}>
                 <Card post={post} goTo={goTo} />
               </div>
             )

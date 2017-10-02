@@ -26,9 +26,10 @@ class Category extends Component {
       })
     })
 
-    axios.get(`${config.restUrl}/2016?slug=${slug}`)
+    console.log(slug);
+    axios.get(`${config.restUrl}/2017?slug=${slug}`)
       .then(({ data }) => {
-       axios.get(`${config.restUrl}/holiday-2016?per_page=100&2016=${data[0].id}`)
+       axios.get(`${config.restUrl}/holiday-2017?per_page=100&2017=${data[0].id}`)
         .then(({ data }) => {
           this.setState(prev => {
             return Object.assign({}, prev, {

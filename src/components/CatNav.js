@@ -25,7 +25,7 @@ class CatNav extends React.Component {
       })
     })
 
-    axios.get(`${config.restUrl}/2016`)
+    axios.get(`${config.restUrl}/2017`)
       .then(({ data }) => {
         this.setState(prev => {
           return Object.assign({}, prev, {
@@ -41,10 +41,14 @@ class CatNav extends React.Component {
       })
   }
 
+  html(__html){
+    return { __html }
+  }
+
   render () {
 
     const { loading, err, categories } = this.state
-
+    let _this = this
     if(err){
       return (
         <div>{err.message}</div>
@@ -60,13 +64,17 @@ class CatNav extends React.Component {
 
           const { id } = cat
 
-          return (
-            <li className="nav-item" key={id}>
-              <a className="nav-link" onClick={() => { 
-                this.props.goTo(`/category/${cat.slug}`) 
-              } }>{cat.name}</a>
-            </li>
-          )
+          if ( cat.slug !== 'sponsored' ) {
+            return (
+              <li className="nav-item" key={id}>
+                <a className="nav-link" onClick={() => { 
+                  this.props.goTo(`/category/${cat.slug}`) 
+                } }  dangerouslySetInnerHTML={_this.html(cat.name)}></a>
+              </li>
+            )
+          }
+          return null
+          
 
         }) }
         </ul>

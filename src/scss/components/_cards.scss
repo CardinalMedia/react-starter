@@ -32,10 +32,41 @@
 }
 
 .seller-info {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   p {
     color: $black;
     font-size: .9rem;
     font-weight: 600;
   }
+}
+
+.tag {
+  cursor: pointer;
+  &.sponsored {
+    cursor: default;
+  }
+}
+
+
+.social-share {
+  display: inline-block;
+  float: right;
+}
+.twitter,
+.facebook {
+  display: inline-block;
+  height: 30px ;
+  width: 30px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center-center;
+}
+
+.twitter {
+  background-image: url('/assets/twitter-icon.svg');
+  vertical-align: text-bottom;
+}
+
+.facebook {
+  background-image: url('/assets/facebook-icon.svg');
 }
