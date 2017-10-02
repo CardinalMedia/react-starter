@@ -29,7 +29,7 @@ function htmlTemplate (item) {
       <link rel="canonical" href="https://giftguides.ourstate.com/holiday-2017/gifts/${item.slug}" />
               </head>
               <body>
-            <noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="/holiday-2017/static/js/main.0c7c10f8.js"></script></body></html>`
+            <noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="/holiday-2017/static/js/main.74875353.js"></script></body></html>`
 }
 
 function createFiles (data) {
